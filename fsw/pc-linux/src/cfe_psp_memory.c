@@ -93,8 +93,8 @@ void CFE_PSP_InitUserReservedArea(void);
 /*
 **  External Declarations
 */
-extern unsigned int _init;
-extern unsigned int _fini;
+extern unsigned int __executable_start;
+extern unsigned int __etext;
 
 /*
 ** Global variables
@@ -792,8 +792,8 @@ int32 CFE_PSP_GetCFETextSegmentInfo(cpuaddr *PtrToCFESegment, uint32 *SizeOfCFES
     }
     else
     {
-        *PtrToCFESegment  = (cpuaddr)(&_init);
-        *SizeOfCFESegment = (uint32)(((cpuaddr)&_fini) - ((cpuaddr)&_init));
+        *PtrToCFESegment  = (cpuaddr)(&__executable_start);
+        *SizeOfCFESegment = (uint32)(((cpuaddr)&__etext) - ((cpuaddr)&__executable_start));
 
         return_code = CFE_PSP_SUCCESS;
     }
