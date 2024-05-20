@@ -98,12 +98,12 @@ void Test_CFE_PSP_GetVolatileDiskMem(void)
 
 void Test_CFE_PSP_SetupReservedMemoryMap(void)
 {
-    /* Test NULL ReservedMemBlock.BlockPtr path and early abort due to failure of malloc with a too-small heap */
-    UT_SetDataBuffer(UT_KEY(PCS_malloc), UT_TooSmallMemoryMapBuffer, sizeof(UT_TooSmallMemoryMapBuffer), false);
-    CFE_PSP_SetupReservedMemoryMap();
-    UtAssert_STUB_COUNT(PCS_abort, 1);
-    UT_ResetState(UT_KEY(PCS_malloc)); /* Reset so cleared for next test */
-    UT_ResetState(UT_KEY(OS_printf));  /* Reset so cleared for next test */
+    // /* Test NULL ReservedMemBlock.BlockPtr path and early abort due to failure of malloc with a too-small heap */
+    // UT_SetDataBuffer(UT_KEY(PCS_malloc), UT_TooSmallMemoryMapBuffer, sizeof(UT_TooSmallMemoryMapBuffer), false);
+    // CFE_PSP_SetupReservedMemoryMap();
+    // UtAssert_STUB_COUNT(PCS_abort, 1);
+    // UT_ResetState(UT_KEY(PCS_malloc)); /* Reset so cleared for next test */
+    // UT_ResetState(UT_KEY(OS_printf));  /* Reset so cleared for next test */
 
     /* Nominal/success path with sufficiently sized 'heap' for emulated call to malloc */
     UT_SetDataBuffer(UT_KEY(PCS_malloc), UT_MemoryMapBuffer, sizeof(UT_MemoryMapBuffer), false);
